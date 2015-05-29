@@ -1,25 +1,49 @@
 package org.wonderland.dev.levi9.springboot.betservices.datamodel;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+
+@Entity
+@Table(name = "offer")
 public class BetOffer {
 
-    private String id;
-    private String name;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+ 
+    @Column(name = "oddsHome")
     private double oddsHome;
+    
+    @Column(name = "oddsAway")
     private double oddsAway;
+    
+    @Column(name = "maxBet")
     private double maxBet;
+    
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "match_id")
+    private Match match;
+    
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "bookie_id")
+    private Bookie bookie;
 
-    public String getId() {
+    
+    
+    public long getId() {
         return id;
     }
-    public void setId(final String id) {
+    public void setId(long id) {
         this.id = id;
     }
-    public String getName() {
-        return name;
-    }
-    public void setName(final String name) {
-        this.name = name;
-    }
+
     public double getOddsHome() {
         return oddsHome;
     }
@@ -38,12 +62,17 @@ public class BetOffer {
     public void setMaxBet(final double maxBet) {
         this.maxBet = maxBet;
     }
-
-    @Override
-    public String toString() {
-        return "BetOffer [id = " + id + ", name = " + name + ", oddsHome = "
-                + oddsHome + ", oddsAway = " + oddsAway + ", maxBet = " + maxBet
-                + "]";
+    public Match getMatch() {
+        return match;
+    }
+    public void setMatch(Match match) {
+        this.match = match;
+    }
+    public Bookie getBookie() {
+        return bookie;
+    }
+    public void setBookie(Bookie bookie) {
+        this.bookie = bookie;
     }
 
 }

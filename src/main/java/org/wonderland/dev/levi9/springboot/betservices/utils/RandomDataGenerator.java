@@ -11,21 +11,18 @@ public class RandomDataGenerator {
 
     public static Bookie generateRandomBettingBestBet() {
         final Bookie bookie = new Bookie();
-        bookie.setId("0001");
         bookie.setName("Best Bet");
         return bookie;
     }
 
     public static Bookie generateRandomBettingMoneyBet() {
         final Bookie bookie = new Bookie();
-        bookie.setId("0002");
-        bookie.setName("Money Bet");
+        bookie.setName("Money Bet 123");
         return bookie;
     }
 
     public static Bookie generateRandomBettingWinnerBet() {
         final Bookie bookie = new Bookie();
-        bookie.setId("0003");
         bookie.setName("Winner Bet");
         return bookie;
     }

@@ -10,6 +10,7 @@ import org.wonderland.dev.levi9.springboot.betservices.utils.RandomDataGenerator
 @RequestMapping("/api/moneybet/matches")
 public class MoneyBetController {
 
+    
     @RequestMapping(method=RequestMethod.GET)
     public Bookie getMatches() {
         return RandomDataGenerator.generateRandomBettingMoneyBet();
