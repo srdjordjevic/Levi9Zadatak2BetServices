@@ -9,7 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity
@@ -29,12 +29,12 @@ public class BetOffer {
     @Column(name = "maxBet")
     private Double maxBet;
     
-    @JsonManagedReference
+    
     @ManyToOne(optional = false)
     @JoinColumn(name = "match_id")
     private Match match;
     
-   // @JsonManagedReference
+    
     @ManyToOne(optional = false)
     @JoinColumn(name = "bookie_id")
     private Bookie bookie;

@@ -12,6 +12,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "bookies")
@@ -24,7 +25,7 @@ public class Bookie {
     @Column(name = "name")
     private String name;
     
-    @JsonBackReference
+    @JsonIgnore
     @OneToMany(mappedBy = "bookie", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<BetOffer> betOffers;
 

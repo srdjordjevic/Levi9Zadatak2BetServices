@@ -4,7 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.wonderland.dev.levi9.springboot.betservices.datamodel.BetOffer;
 import org.wonderland.dev.levi9.springboot.betservices.datamodel.Bookie;
+import org.wonderland.dev.levi9.springboot.betservices.repositories.BetOfferRepository;
 import org.wonderland.dev.levi9.springboot.betservices.repositories.BookieRepository;
 
 @RestController
@@ -12,10 +14,10 @@ import org.wonderland.dev.levi9.springboot.betservices.repositories.BookieReposi
 public class WinnerBetController {
     
     @Autowired
-    BookieRepository repository;
+    BetOfferRepository repository;
 
     @RequestMapping(method=RequestMethod.GET)
-    public Bookie getMatches() {
+    public BetOffer getMatches() {
         return repository.findOne(1L);
     }
 }
