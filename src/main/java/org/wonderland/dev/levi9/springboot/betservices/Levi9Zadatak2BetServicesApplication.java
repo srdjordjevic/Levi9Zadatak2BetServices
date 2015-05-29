@@ -10,9 +10,9 @@ import org.wonderland.dev.levi9.springboot.betservices.datamodel.Bookie;
 import org.wonderland.dev.levi9.springboot.betservices.repositories.BookieRepository;
 
 
-/*@ComponentScan
+@ComponentScan
 @EnableAutoConfiguration
-@EnableJpaRepositories*/
+@EnableJpaRepositories
 @SpringBootApplication
 public class Levi9Zadatak2BetServicesApplication {
     

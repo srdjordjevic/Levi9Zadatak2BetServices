@@ -12,12 +12,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "bookie")
+@Table(name = "bookies")
 public class Bookie {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private long id;
     
     @Column(name = "name")
     private String name;
@@ -25,10 +25,10 @@ public class Bookie {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<BetOffer> betOffers;
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
-    public void setId(final Long id) {
+    public void setId(final long id) {
         this.id = id;
     }
     public String getName() {

@@ -12,12 +12,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "match")
+@Table(name = "matches")
 public class Match {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private long id;
     
     @Column(name = "name")
     private String name;
@@ -25,17 +25,17 @@ public class Match {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<BetOffer> betOffers;
 
-    public Match(Long id, String name, Set<BetOffer> betOffers) {
+    public Match(long id, String name, Set<BetOffer> betOffers) {
         this.id = id;
         this.name = name;
         this.betOffers = betOffers;
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 

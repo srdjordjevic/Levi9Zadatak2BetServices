@@ -1,0 +1,9 @@
+org\wonderland\dev\levi9\springboot\betservices\BestBetController.class
+org\wonderland\dev\levi9\springboot\betservices\datamodel\BetOffer.class
+org\wonderland\dev\levi9\springboot\betservices\datamodel\Bookie.class
+org\wonderland\dev\levi9\springboot\betservices\WinnerBetController.class
+org\wonderland\dev\levi9\springboot\betservices\datamodel\Match.class
+org\wonderland\dev\levi9\springboot\betservices\MoneyBetController.class
+org\wonderland\dev\levi9\springboot\betservices\datamodel\Betting.class
+org\wonderland\dev\levi9\springboot\betservices\Levi9Zadatak2BetServicesApplication.class
+org\wonderland\dev\levi9\springboot\betservices\utils\RandomDataGenerator.class
