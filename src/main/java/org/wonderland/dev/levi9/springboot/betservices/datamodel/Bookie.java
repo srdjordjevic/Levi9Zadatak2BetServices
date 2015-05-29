@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name = "bookies")
 public class Bookie {
@@ -22,11 +24,12 @@ public class Bookie {
     @Column(name = "name")
     private String name;
     
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonBackReference
+    @OneToMany(mappedBy = "bookie", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<BetOffer> betOffers;
 
-    public long getId() {
-        return id;
+    public String getId() {
+        return "BK" + id;
     }
     public void setId(final long id) {
         this.id = id;

@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name = "matches")
 public class Match {
@@ -22,14 +24,9 @@ public class Match {
     @Column(name = "name")
     private String name;
     
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonBackReference
+    @OneToMany(mappedBy = "match", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<BetOffer> betOffers;
-
-    public Match(long id, String name, Set<BetOffer> betOffers) {
-        this.id = id;
-        this.name = name;
-        this.betOffers = betOffers;
-    }
 
     public long getId() {
         return id;

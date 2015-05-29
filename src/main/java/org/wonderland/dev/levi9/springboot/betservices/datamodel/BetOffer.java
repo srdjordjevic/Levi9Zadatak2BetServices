@@ -9,6 +9,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 
 @Entity
 @Table(name = "offers")
@@ -19,18 +21,20 @@ public class BetOffer {
     private long id;
  
     @Column(name = "oddsHome")
-    private double oddsHome;
+    private Double oddsHome;
     
     @Column(name = "oddsAway")
-    private double oddsAway;
+    private Double oddsAway;
     
     @Column(name = "maxBet")
-    private double maxBet;
+    private Double maxBet;
     
+    @JsonManagedReference
     @ManyToOne(optional = false)
     @JoinColumn(name = "match_id")
     private Match match;
     
+   // @JsonManagedReference
     @ManyToOne(optional = false)
     @JoinColumn(name = "bookie_id")
     private Bookie bookie;
@@ -44,22 +48,22 @@ public class BetOffer {
         this.id = id;
     }
 
-    public double getOddsHome() {
+    public Double getOddsHome() {
         return oddsHome;
     }
-    public void setOddsHome(final double oddsHome) {
+    public void setOddsHome(final Double oddsHome) {
         this.oddsHome = oddsHome;
     }
-    public double getOddsAway() {
+    public Double getOddsAway() {
         return oddsAway;
     }
-    public void setOddsAway(final double oddsAway) {
+    public void setOddsAway(final Double oddsAway) {
         this.oddsAway = oddsAway;
     }
-    public double getMaxBet() {
+    public Double getMaxBet() {
         return maxBet;
     }
-    public void setMaxBet(final double maxBet) {
+    public void setMaxBet(final Double maxBet) {
         this.maxBet = maxBet;
     }
     public Match getMatch() {
