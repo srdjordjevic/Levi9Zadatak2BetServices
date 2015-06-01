@@ -18,21 +18,16 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name = "bookies")
 public class Bookie {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
-    
-    @Column(name = "name")
+    private Long id;
     private String name;
-    
-    @JsonIgnore
-    @OneToMany(mappedBy = "bookie", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<BetOffer> betOffers;
 
-    public String getId() {
-        return "BK" + id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public Long getId() {
+        return id;
     }
-    public void setId(final long id) {
+    public void setId(final Long id) {
         this.id = id;
     }
     public String getName() {
@@ -41,9 +36,13 @@ public class Bookie {
     public void setName(final String name) {
         this.name = name;
     }
+    
+    @OneToMany(cascade=CascadeType.ALL, mappedBy="bookie")  
     public List<BetOffer> getBetOffers() {
         return betOffers;
     }
+    
+    //@OneToMany(cascade=CascadeType.ALL)  
     public void setBetOffers(final List<BetOffer> betOffers) {
         this.betOffers = betOffers;
     }

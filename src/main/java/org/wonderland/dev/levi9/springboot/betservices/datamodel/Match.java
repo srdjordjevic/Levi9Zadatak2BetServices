@@ -1,5 +1,6 @@
 package org.wonderland.dev.levi9.springboot.betservices.datamodel;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -18,22 +19,17 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name = "matches")
 public class Match {
     
+    private Long id;
+    private String name;
+    private List<BetOffer> betOffers;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
-    
-    @Column(name = "name")
-    private String name;
-    
-    @JsonIgnore
-    @OneToMany(mappedBy = "match", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<BetOffer> betOffers;
-
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -45,11 +41,12 @@ public class Match {
         this.name = name;
     }
 
-    public Set<BetOffer> getBetOffers() {
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="bookie")
+    public List<BetOffer> getBetOffers() {
         return betOffers;
     }
 
-    public void setBetOffers(Set<BetOffer> betOffers) {
+    public void setBetOffers(List<BetOffer> betOffers) {
         this.betOffers = betOffers;
     }
 }

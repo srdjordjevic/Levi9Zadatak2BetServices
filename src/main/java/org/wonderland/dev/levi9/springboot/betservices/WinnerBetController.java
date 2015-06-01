@@ -14,10 +14,10 @@ import org.wonderland.dev.levi9.springboot.betservices.repositories.BookieReposi
 public class WinnerBetController {
     
     @Autowired
-    BetOfferRepository repository;
+    BookieRepository repository;
 
     @RequestMapping(method=RequestMethod.GET)
-    public BetOffer getMatches() {
-        return repository.findOne(1L);
+    public Bookie getMatches() {
+        return (repository.findByName("Winner Bet")).get(0);
     }
 }

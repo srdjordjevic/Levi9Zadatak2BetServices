@@ -1,7 +1,9 @@
 package org.wonderland.dev.levi9.springboot.betservices.datamodel;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,35 +18,32 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name = "offers")
 public class BetOffer {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
- 
-    @Column(name = "oddsHome")
+    private Long id;
     private Double oddsHome;
-    
-    @Column(name = "oddsAway")
     private Double oddsAway;
-    
-    @Column(name = "maxBet")
     private Double maxBet;
-    
-    
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "match_id")
-    private Match match;
-    
-    
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "bookie_id")
+    private Match game;
     private Bookie bookie;
 
+    public BetOffer() {
+        super();
+    }
     
+    public BetOffer(Double oddsHome, Double oddsAway, Double maxBet, Match game, Bookie bookie) {
+        super();
+        this.oddsHome = oddsHome;
+        this.oddsAway = oddsAway;
+        this.maxBet = maxBet;
+        this.game = game;
+        this.bookie = bookie;
+    }
     
-    public long getId() {
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    public Long getId() {
         return id;
     }
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -66,17 +65,36 @@ public class BetOffer {
     public void setMaxBet(final Double maxBet) {
         this.maxBet = maxBet;
     }
-    public Match getMatch() {
-        return match;
+    
+    @JsonIgnore
+    @ManyToOne(cascade=CascadeType.ALL)  
+    public Match getGame() {
+        return game;
     }
-    public void setMatch(Match match) {
-        this.match = match;
+    public void setGame(Match game) {
+        if(game.equals(this.game)) {
+            return;
+        }
+        this.game = game;
     }
+    
+    @JsonIgnore
+    @ManyToOne(cascade=CascadeType.ALL)  
     public Bookie getBookie() {
         return bookie;
     }
     public void setBookie(Bookie bookie) {
+        if(bookie.equals(this.bookie)) {
+            return;
+        }
         this.bookie = bookie;
     }
-
+    
+    public String getName() {
+        return game.getName();
+    }
+    
+    public void setName(String name) {
+        return;
+    }
 }
