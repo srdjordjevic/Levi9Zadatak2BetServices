@@ -16,6 +16,6 @@ public class MoneyBetController {
     
     @RequestMapping(method=RequestMethod.GET)
     public Bookie getMatches() {
-        return repository.findOne(2L);
+        return (repository.findByName("Money Bet")).get(0);
     }
 }

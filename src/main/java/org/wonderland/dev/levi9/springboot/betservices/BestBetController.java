@@ -16,7 +16,7 @@ public class BestBetController {
     
     @RequestMapping(method=RequestMethod.GET)
     public Bookie getMatches() {
-        return repository.findOne(3L);
+        return (repository.findByName("Best Bet")).get(0);
     }
 
 }
